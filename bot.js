@@ -248,7 +248,7 @@ async function main() {
   console.log("Time:", new Date().toISOString());
 
   // Cycle: 0=Signal1, 1=Signal2, 2=Viral — har 15 min baad
-  var runNum = Math.floor(Date.now() / (15 * 60 * 1000));
+  var runNum = Math.floor(Date.now() / (30 * 60 * 1000));
   var slot = runNum % 3;
   console.log("Run #" + runNum + " | Slot:", slot, slot === 0 ? "(Signal 1)" : slot === 1 ? "(Signal 2)" : "(Viral Update)");
 
