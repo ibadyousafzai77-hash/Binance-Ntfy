@@ -230,7 +230,7 @@ async function main() {
     var fetched = await Promise.all([getTrendingCoins(), getTopMovers()]);
     var templateIdx = slot - 2;
     content = VIRAL_TEMPLATES[templateIdx](fetched[0], fetched[1]);
-    title = slot === 2 ? "🔥 Market Update Ready — Copy & Post!" : "🌐 Crypto Trending Post — Copy & Post!";
+    title = slot === 2 ? "Market Update Ready — Copy & Post on Binance!" : "Crypto Trending Post — Copy & Post on Binance!";
     imageUrl = getImageUrl(slot === 2 ? "viral1" : "viral2", "", "");
   }
 
