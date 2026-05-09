@@ -223,7 +223,7 @@ async function main() {
     if (!sig) throw new Error("No signal found");
     console.log("Best signal:", sig.symbol, sig.direction, sig.strength, "Score:", sig.score.toFixed(1));
     content = buildSignalPost(sig, slot === 1);
-    title = (sig.direction === "LONG" ? "🟢" : "🔴") + " " + sig.symbol + " " + sig.direction + " | " + sig.strength + " — Copy & Post!";
+        title = sig.symbol + " " + sig.direction + " | " + sig.strength + " SIGNAL — Copy & Post on Binance!";
     imageUrl = getImageUrl("signal", sig.symbol, sig.direction);
   } else {
     console.log("Building viral post #" + (slot - 1) + "...");
