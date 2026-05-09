@@ -172,14 +172,18 @@ function getImageUrl(type, symbol, direction) {
 function sendNtfy(title, message, imageUrl) {
   return new Promise(function (resolve, reject) {
     var body = Buffer.from(message, "utf8");
+    var safeTitle = Buffer.from(title).toString("base64");
     var headers = {
-      "Title": title,
+      "Title": "base64," + safeTitle,
       "Priority": "high",
       "Tags": "chart_increasing,bell",
       "Content-Type": "text/plain; charset=utf-8",
       "Content-Length": body.length,
     };
-    if (imageUrl) headers["Attach"] = imageUrl;
+    if (imageUrl) {
+      var safeAttach = imageUrl.replace(/[^\x20-\x7E]/g, "");
+      headers["Attach"] = safeAttach;
+    }
     var options = {
       hostname: "ntfy.sh",
       path: "/" + NTFY_TOPIC,
